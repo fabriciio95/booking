@@ -1,0 +1,83 @@
+# SYSTEM STANDARD
+server.port={SERVER_PORT}
+server.environment={SERVER_ENVIRONMENT}
+
+# API Info
+api.id={API_ID}
+api.name={API_NAME}
+api.version={API_VERSION}
+
+# API OAS custom config
+api.oas.server-url={API_SERVER_URL}
+api.oas.title=${api.name}
+api.oas.description={API_DESCRIPTION}
+api.oas.version=${api.version}
+
+# CORS
+api.access.control.allow.origin={API_ACCESS_CONTROL_ALLOW_ORIGIN}
+
+# ERROR
+error.id={ERROR_ID}
+
+# CODS
+country.cod.brazil={COUNTRY_COD_BRAZIL}
+
+---------------
+
+# EVENT HUB
+ehauth.globe.business.partner.name.globe.IntercabIntegrationService.listen.connstring.primary={EVENTHUB_CONNSTRING_PRIMARY}
+storage.primary.connectionstring=DefaultEndpointsProtocol=https;AccountName={STORAGE_PRIMARY_CONNECTIONSTRING}
+intercab.eventhub.globe.properties.filter={EVENTHUB_FILTER}
+intercab.eventhub.globe.consumergroupname={EVENTHUB_GLOBE_CONSUMERGROUPNAME}
+intercab.eventhub.globe.hostnameprefix={EVENTHUB_GLOBE_HOSTNAMEPREFIX}
+intercab.eventhub.globe.storagecontainername={EVENTHUB_GLOBE_STORAGECONTAINERNAME}
+
+#TOKEN
+microsoft.token.url={MICROSOFT_TOKEN_URL}
+consumerkey=${CONSUMER_KEY}
+microsoft.client.id={MICROSOFT_CLIENT_ID}
+microsoft.client.secret={MICROSOFT_CLIENT_SECRET}
+
+# MONITORING - EVENTHUB
+eventhub.monitoring.connectionstring={EVENTHUB_MONITORING_CONNECTION_STRING}
+
+# MONGODB
+mongodb.connections.perhost={MONGODB_CONNECTIONS_PERHOST | Exemple: 1}
+mongodb.threads.connection.multiplier={MONGODB_THREADS_CONNECTION_MULTIPLIER | Exemple: 1}
+mongodb.connect.timeout={MONGODB_CONNECT_TIMEOUT | Exemple: 10000}
+mongodb.max.wait.time={MONGODB_MAX_WAIT_TIME | Exemple: 120000}
+mongodb.retry.reads={MONGODB_RETRY_READS | Exemple: true}
+mongodb.socket.timeout={MONGODB_SOCKET_TIMEOUT | Exemple: 0}
+mongodb.heartbeat.socket.timeout={MONGODB_HEARTBEAT_SOCKET_TIMEOUT | Exemple: 20000}
+mongodb.minheartbeat.frequency={MONGODB_MINHEARTBEAT_FREQUENCY | Exemple: 500}
+mongodb.database={MONGODB_DATABASE}
+intercab.log.cosmosdb.primary.connectionstring={MONGODB_URI}
+mongodb.integrator.collection.log={LOG_COLLECTION_NAME}
+
+# BUSINESS PARTNER
+eventhub.globe.businespartnes.name={EVENTHUB_GLOBE_BUSINESPARTNES.NAME}
+intercab.service.businesspartner.customer.url={INTERCAB_SERVICE_BUSINESSPARTNER_CUSTOMER_URL}
+intercab.service.businesspartner.vendor.url={INTERCAB_SERVICE_BUSINESSPARTNER_VENDOR_URL}
+
+# FACILITY
+eventhub.globe.facility.name={EVENTHUB_GLOBE_FACILITY_NAME}
+intercab.service.facility.integrator.url={INTERCAB_SERVICE_FACILITY_INTEGRATOR_URL}
+
+# COUNTRY
+eventhub.globe.country.name={EVENTHUB_GLOBE_COUNTRY_NAME}
+intercab.service.country.integrator.url={INTERCAB_SERVICE_COUNTRY_INTEGRATOR.URL}
+
+# STATE
+eventhub.globe.state.name={EVENTHUB_GLOBE_STATE_NAME}
+intercab.service.state.integrator.url={INTERCAB_SERVICE_STATE_INTEGRATOR_URL}
+
+# CITY
+eventhub.globe.city.name={EVENTHUB_GLOBE_CITY_NAME}
+intercab.service.city.integrator.url={INTERCAB_SERVICE_CITY_INTEGRATOR_URL}
+
+# LOCATION
+eventhub.globe.location.name={EVENTHUB_GLOBE_LOCATION_NAME}
+intercab.service.location.integrator.url={INTERCAB_SERVICE_LOCATION_INTEGRATOR_URL}
+
+# AZURE KEY VAULTT
+azure.keyvault.name={AZURE_KEYVAULT_NAME}

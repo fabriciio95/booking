@@ -1,0 +1,13 @@
+Production Release Date: 2021-01-21
+    Added
+        Intercab Integrator EndPoints:
+        - Business Partner
+        - City
+        - State
+        - Country
+        - Location
+        - Facility
+    Changed
+        Nothing
+    Removed
+        Nothing

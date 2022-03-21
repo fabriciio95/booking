@@ -1,0 +1,76 @@
+variables:
+ - name: projectName
+   value: ANL-Intercab-IntegratorBPMA
+
+pool:
+  name: Azure Pipelines
+  demands: maven
+  vmImage: 'ubuntu-latest'
+trigger:
+  batch: true
+  branches:
+    include:
+    - CDT
+    - homolog
+    - master
+
+
+parameters:
+- name: mavenPOMFile
+  displayName: Path of pom.xml file
+  type: string
+  default: pom.xml
+
+resources:
+  repositories:
+    - repository: PolarisTemplateRepo # Repository name needs to stay the same!
+      type: github
+      name: Maersk-Global/DOT-AzureDevops-CICD-templates
+      ref: refs/heads/master # use master branch as default
+      endpoint: GitHub-Polaris-Scanning #Replace with your GH connection
+    - repository: BDTemplateRepo # Repository name can be different
+      type: github
+      name: Maersk-Global/DOT-AzureDevops-CICD-templates
+      ref: refs/heads/master
+      endpoint: GitHub-Polaris-Scanning #Replace with your GH connection
+
+stages:
+  - stage: Scanning
+    displayName: Polaris Scanning
+    jobs:
+      - template: polaris.template.yml@PolarisTemplateRepo
+        parameters:
+          webAppScan: "webAppScanTrue"
+          polarisScanBranch: ${{variables['Build.SourceBranchName']}}
+  - stage: Build
+    displayName: Building Artifact
+    jobs:
+    - job: MavenCompile
+      displayName: Maven Compile
+      steps:
+      - task: Maven@3
+        displayName: 'Maven pom.xml'
+        inputs:
+          mavenPomFile: ${{ Parameters.mavenPOMFile }}
+          options: '--settings  settings.xml'
+      - task: CopyFiles@2
+        displayName: 'Copy Files to Directory: $(build.SourceBranchName) '
+        inputs:
+          SourceFolder: '$(system.defaultworkingdirectory)'
+          Contents: '**/*.jar'
+          TargetFolder: '$(build.artifactstagingdirectory)/$(build.SourceBranchName)'
+        condition: succeeded()
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: $(build.SourceBranchName)'
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)/$(build.SourceBranchName)'
+          artifactName: '$(build.SourceBranchName)'
+        condition: succeeded()
+  - stage: BlackDuck
+    displayName: BlackDuck Scanning
+    jobs:
+    - job: BlackDuck
+      steps:
+      - template: blackduck.template.yml@BDTemplateRepo
+        parameters:
+          projectName: '$(projectName)'    
